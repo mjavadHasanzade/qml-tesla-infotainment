@@ -1,5 +1,6 @@
 import QtQuick
 
+
 Rectangle {
     id: bottomBar
     anchors {
