@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>ui/assets/car.webp</file>
+        <file>ui/assets/car.png</file>
+        <file>ui/assets/icon-car.png</file>
+    </qresource>
+</RCC>
