@@ -14,7 +14,7 @@ Rectangle {
 
     Image {
         id: carSettingsIcon
-        source: "://ui/assets/icon-car.png"
+        source: "qrc:/ui/assets/icon-car.png"
 
         anchors {
             left: parent.left;

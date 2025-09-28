@@ -27,6 +27,10 @@ qt_add_qml_module(appTesla_Infotainment
 
     RESOURCES
         assets.qrc
+
+    SOURCES
+        Controllers/system.h
+        Controllers/system.cpp
 )
 
 

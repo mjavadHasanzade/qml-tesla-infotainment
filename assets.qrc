@@ -3,5 +3,7 @@
         <file>ui/assets/car.webp</file>
         <file>ui/assets/car.png</file>
         <file>ui/assets/icon-car.png</file>
+        <file>ui/assets/icons-lock.png</file>
+        <file>ui/assets/icons-unlock.png</file>
     </qresource>
 </RCC>

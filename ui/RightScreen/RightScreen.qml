@@ -15,17 +15,13 @@ Rectangle {
     Plugin {
         id: mapPlugin
         name: "osm"
-        PluginParameter { name: "osm.mapping.providersrepository.address"; value: "http://www.mywebsite.com/osm_repository" }
-        PluginParameter { name: "osm.mapping.highdpi_tiles"; value: true }
     }
 
-
     Map {
-        activeMapType: supportedMapTypes[1]
         id: map
         anchors.fill: parent
         plugin: mapPlugin
-        center: QtPositioning.coordinate(35.7219, 51.3347) // Oslo
+        center: QtPositioning.coordinate(35.7219, 51.3347) // Tehran
         zoomLevel: 14
         property geoCoordinate startCentroid
 
@@ -73,11 +69,10 @@ Rectangle {
         }
     }
 
-    Rectangle{
+    Image {
         id: lockIcon;
         width: 25;
         height: 25;
-        radius: 20;
 
 
         anchors {
@@ -86,8 +81,68 @@ Rectangle {
             margins: 20
         }
 
-        color: (system.carLocked ? "red" : "blue")
+        source: (systemHandler.carLocked ? "qrc:/ui/assets/icons-lock.png" : "qrc:/ui/assets/icons-unlock.png");
 
+        MouseArea {
+            anchors.fill: parent;
+            onClicked: systemHandler.setCarLocked(!systemHandler.carLocked);
+        }
+
+    }
+
+    Text {
+        id: dateTimeDisplay
+
+        anchors {
+            left: lockIcon.right;
+            leftMargin: 40;
+            bottom: lockIcon.bottom
+        }
+
+        font{
+            pixelSize: 14;
+            bold: true;
+        }
+
+        color: "#2f4f4f";
+        text: systemHandler.currentTime;
+    }
+
+    Text {
+        id: outdoorTempDisplay
+
+        anchors {
+            left: dateTimeDisplay.right;
+            leftMargin: 40;
+            bottom: lockIcon.bottom
+        }
+
+        font{
+            pixelSize: 14;
+            bold: true;
+        }
+
+        color: "#2f4f4f";
+        text: systemHandler.outdoorTemp + "°F";
+    }
+
+
+    Text {
+        id: userNameDisplay
+
+        anchors {
+            left: outdoorTempDisplay.right;
+            leftMargin: 40;
+            bottom: lockIcon.bottom
+        }
+
+        font{
+            pixelSize: 14;
+            bold: true;
+        }
+
+        color: "#2f4f4f";
+        text: systemHandler.userName;
     }
 
 
