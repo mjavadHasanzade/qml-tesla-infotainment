@@ -11,15 +11,14 @@ Rectangle {
         top: parent.top;
     }
 
+    width: parent.width *1 /3;
+
     Image {
         id: carRender
         anchors.centerIn: parent
-        width: parent.width
+        width: parent.width *.85
         fillMode: Image.PreserveAspectFit
-        source: "://ui/assets/car.png"
+        source: "qrc:/ui/assets/car.png"
     }
-
-    color: "blue";
-    width: parent.width *1 /3;
 
 }

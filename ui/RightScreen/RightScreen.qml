@@ -10,6 +10,7 @@ Rectangle {
         bottom: bottomBar.top;
         right: parent.right;
     }
+    width: parent.width *2 /3;
 
     Plugin {
         id: mapPlugin
@@ -72,6 +73,22 @@ Rectangle {
         }
     }
 
-    color: "orange"
-    width: parent.width *2 /3;
+    Rectangle{
+        id: lockIcon;
+        width: 25;
+        height: 25;
+        radius: 20;
+
+
+        anchors {
+            left: parent.left;
+            top: parent.top;
+            margins: 20
+        }
+
+        color: (system.carLocked ? "red" : "blue")
+
+    }
+
+
 }
