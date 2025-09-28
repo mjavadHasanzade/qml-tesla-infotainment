@@ -15,10 +15,16 @@ Rectangle {
     Plugin {
         id: mapPlugin
         name: "osm"
+
+        PluginParameter{
+            name: "osm.mapping.custom.host";
+            value: "https://tile.openstreetmap.org/";
+        }
     }
 
     Map {
         id: map
+        activeMapType: map.supportedMapTypes[map.supportedMapTypes.length - 1];
         anchors.fill: parent
         plugin: mapPlugin
         center: QtPositioning.coordinate(35.7219, 51.3347) // Tehran
