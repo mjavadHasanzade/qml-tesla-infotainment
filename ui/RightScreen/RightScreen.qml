@@ -110,7 +110,7 @@ Rectangle {
             bold: true;
         }
 
-        color: "#2f4f4f";
+        color: "black";
         text: systemHandler.currentTime;
     }
 
@@ -128,7 +128,7 @@ Rectangle {
             bold: true;
         }
 
-        color: "#2f4f4f";
+        color: "black";
         text: systemHandler.outdoorTemp + "°F";
     }
 
@@ -147,9 +147,23 @@ Rectangle {
             bold: true;
         }
 
-        color: "#2f4f4f";
+        color: "black";
         text: systemHandler.userName;
     }
 
+    NavigationSearchBox {
+        id: navigationSearchBox;
+
+        anchors{
+
+            top: lockIcon.bottom;
+            left: parent.left;
+            margins:20;
+        }
+
+        color: "white";
+        width: parent.width /3;
+        height: 50
+    }
 
 }

@@ -24,6 +24,7 @@ qt_add_qml_module(appTesla_Infotainment
         ui/BottomBar/BottomBar.qml
         ui/RightScreen/RightScreen.qml
         ui/LeftScreen/LeftScreen.qml
+        ui/RightScreen/NavigationSearchBox.qml
 
     RESOURCES
         assets.qrc
