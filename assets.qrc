@@ -5,5 +5,6 @@
         <file>ui/assets/icon-car.png</file>
         <file>ui/assets/icons-lock.png</file>
         <file>ui/assets/icons-unlock.png</file>
+        <file>ui/assets/icons-search.png</file>
     </qresource>
 </RCC>

@@ -153,17 +153,6 @@ Rectangle {
 
     NavigationSearchBox {
         id: navigationSearchBox;
-
-        anchors{
-
-            top: lockIcon.bottom;
-            left: parent.left;
-            margins:20;
-        }
-
-        color: "white";
-        width: parent.width /3;
-        height: 50
     }
 
 }
