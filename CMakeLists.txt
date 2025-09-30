@@ -8,6 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Quick Location)
 find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core)
 
 qt_standard_project_setup(REQUIRES 6.9)
 
@@ -25,6 +26,7 @@ qt_add_qml_module(appTesla_Infotainment
         ui/RightScreen/RightScreen.qml
         ui/LeftScreen/LeftScreen.qml
         ui/RightScreen/NavigationSearchBox.qml
+        ui/BottomBar/HVACComponent.qml
 
     RESOURCES
         assets.qrc
@@ -32,6 +34,8 @@ qt_add_qml_module(appTesla_Infotainment
     SOURCES
         Controllers/system.h
         Controllers/system.cpp
+        Controllers/hvachandler.h
+        Controllers/hvachandler.cpp
 )
 
 
@@ -50,6 +54,7 @@ target_link_libraries(appTesla_Infotainment
     PRIVATE Qt6::Quick
     Qt6::Location
 )
+target_link_libraries(appTesla_Infotainment PRIVATE Qt6::Core)
 target_link_libraries(appTesla_Infotainment PRIVATE Qt6::Core)
 
 include(GNUInstallDirs)
