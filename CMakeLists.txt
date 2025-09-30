@@ -9,6 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt6 REQUIRED COMPONENTS Quick Location)
 find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core)
 
 qt_standard_project_setup(REQUIRES 6.9)
 
@@ -27,6 +28,7 @@ qt_add_qml_module(appTesla_Infotainment
         ui/LeftScreen/LeftScreen.qml
         ui/RightScreen/NavigationSearchBox.qml
         ui/BottomBar/HVACComponent.qml
+        ui/BottomBar/VolumeComponent.qml
 
     RESOURCES
         assets.qrc
@@ -36,6 +38,8 @@ qt_add_qml_module(appTesla_Infotainment
         Controllers/system.cpp
         Controllers/hvachandler.h
         Controllers/hvachandler.cpp
+        Controllers/audiocontroller.h
+        Controllers/audiocontroller.cpp
 )
 
 
@@ -54,6 +58,7 @@ target_link_libraries(appTesla_Infotainment
     PRIVATE Qt6::Quick
     Qt6::Location
 )
+target_link_libraries(appTesla_Infotainment PRIVATE Qt6::Core)
 target_link_libraries(appTesla_Infotainment PRIVATE Qt6::Core)
 target_link_libraries(appTesla_Infotainment PRIVATE Qt6::Core)
 

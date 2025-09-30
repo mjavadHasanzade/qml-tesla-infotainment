@@ -6,5 +6,9 @@
         <file>ui/assets/icons-lock.png</file>
         <file>ui/assets/icons-unlock.png</file>
         <file>ui/assets/icons-search.png</file>
+        <file>ui/assets/icons-volume-normal.png</file>
+        <file>ui/assets/icons-mute.png</file>
+        <file>ui/assets/icons-low-volume.png</file>
+        <file>ui/assets/icons-audio-high.png</file>
     </qresource>
 </RCC>

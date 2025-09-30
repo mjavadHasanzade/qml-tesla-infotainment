@@ -10,7 +10,8 @@ Rectangle {
     }
 
     color: "black"
-    height: parent.height / 12
+    height: parent.height / 12;
+    width: parent.width;
 
     Image {
         id: carSettingsIcon
@@ -45,9 +46,19 @@ Rectangle {
         anchors {
             top:parent.top;
             bottom: parent.bottom;
-            right: parent.right;
+            right: volumeControl.left;
             rightMargin: parent.width /6;
         }
         hvacController: passengerHVAC;
+    }
+
+    VolumeComponent {
+        id: volumeControl
+        anchors {
+            top: parent.top;
+            bottom: parent.bottom;
+            right: parent.right;
+        }
+        width: parent.width / 10;
     }
 }

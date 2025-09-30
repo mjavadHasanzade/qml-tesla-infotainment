@@ -3,6 +3,7 @@
 #include <QQmlContext>
 #include <Controllers/system.h>
 #include <Controllers/hvachandler.h>
+#include <Controllers/audiocontroller.h>
 
 int main(int argc, char *argv[])
 {
@@ -24,6 +25,9 @@ int main(int argc, char *argv[])
 
     HVACHandler *m_passengerHAVCHandler = new HVACHandler(&app);
     engine.rootContext()->setContextProperty("passengerHVAC", m_passengerHAVCHandler);
+
+    AudioController *m_audioHAVCHandler = new AudioController(&app);
+    engine.rootContext()->setContextProperty("audioHandler", m_audioHAVCHandler);
 
     engine.loadFromModule("Tesla_Infotainment", "Main");
     if (engine.rootObjects().isEmpty())
