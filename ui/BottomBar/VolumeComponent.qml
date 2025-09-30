@@ -2,7 +2,28 @@ import QtQuick
 import QtQuick.Effects
 
 Item {
-    property string fontColor: "#ccc"
+    property string fontColor: "#ccc";
+
+    Connections {
+        target: audioHandler;
+
+        function onVolumeChanged() {  // same as the signal in controller
+            volumeIconTextVisiblityTimer.stop(); // avoid timers' intruption
+            targetVolumeIcon.visible = false;
+            volumeIconTextVisiblityTimer.start();
+        }
+    }
+
+    Timer{
+        id: volumeIconTextVisiblityTimer;
+        interval: 500;
+        repeat: false;
+
+        onTriggered: {
+            targetVolumeIcon.visible = true;
+        }
+    }
+
 
     Rectangle {
         id: decrementButton
@@ -23,7 +44,7 @@ Item {
 
         MouseArea {
             anchors.fill: parent;
-            onClicked: audioHandler.changeVolume(-10);
+            onClicked: audioHandler.changeVolume(-5);
             cursorShape: "PointingHandCursor"
         }
     }
@@ -59,13 +80,14 @@ Item {
         }
 
         Text {
-            id: targetVolumeText
+            id: targetVolumeText;
             text: audioHandler.volume;
-            font.pixelSize: 10
+            font.pixelSize: 16;
             color: "#fff"
-            width: parent.width
+            width: parent.width;
             horizontalAlignment: Text.AlignHCenter
-            anchors.topMargin: 4
+            anchors.topMargin: 4;
+            visible: !targetVolumeIcon.visible;
         }
     }
 
@@ -90,7 +112,7 @@ Item {
 
         MouseArea {
             anchors.fill: parent;
-            onClicked: audioHandler.changeVolume(10);
+            onClicked: audioHandler.changeVolume(5);
             cursorShape: "PointingHandCursor"
         }
     }
