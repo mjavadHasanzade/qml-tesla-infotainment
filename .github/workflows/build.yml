@@ -75,81 +75,81 @@ jobs:
           name: ${{ env.ARTIFACT_WIN }}
           path: ${{ runner.temp }}\${{ env.ARTIFACT_WIN }}
 
-  # build-linux:
-  #   name: Build Linux
-  #   runs-on: ubuntu-22.04
-  #   steps:
-  #     - name: Checkout repo
-  #       uses: actions/checkout@v4
-  #       with:
-  #         submodules: recursive
-  #         fetch-depth: 0
-  #         fetch-tags: true
+  build-linux:
+    name: Build Linux
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          fetch-tags: true
 
-  #     - name: Install Qt
-  #       uses: jurplel/install-qt-action@v4
-  #       with:
-  #         version: ${{ env.QT_VERSION }}
-  #         modules: qtcharts qtmultimedia qtshadertools
-  #         install-deps: true   # ensures runtime libraries are installed
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: ${{ env.QT_VERSION }}
+          modules: qtcharts qtmultimedia qtshadertools
+          install-deps: true   # ensures runtime libraries are installed
 
-  #     - name: Install 7zip
-  #       run: sudo apt-get update && sudo apt-get install -y p7zip-full
+      - name: Install 7zip
+        run: sudo apt-get update && sudo apt-get install -y p7zip-full
 
-  #     - name: Create build directory
-  #       run: mkdir build
+      - name: Create build directory
+        run: mkdir build
 
-  #     - name: Build
-  #       working-directory: build
-  #       run: |
-  #         qmake -r ../qt-webcam.pro
-  #         make -j$(nproc)
+      - name: Build
+        working-directory: build
+        run: |
+          qmake -r ../qt-webcam.pro
+          make -j$(nproc)
 
-  #     - name: Package build
-  #       run: 7z a ${{ env.ARTIFACT_LIN }} build/* -r
+      - name: Package build
+        run: 7z a ${{ env.ARTIFACT_LIN }} build/* -r
 
-  #     - name: Create desktop file for AppImage
-  #       run: |
-  #         cat > build/qt-webcam.desktop <<EOL
-  #         [Desktop Entry]
-  #         Name=Qt Webcam
-  #         Exec=qt-webcam
-  #         Icon=qt-webcam
-  #         Type=Application
-  #         Categories=Utility;
-  #         EOL
+      - name: Create desktop file for AppImage
+        run: |
+          cat > build/qt-webcam.desktop <<EOL
+          [Desktop Entry]
+          Name=Qt Webcam
+          Exec=qt-webcam
+          Icon=qt-webcam
+          Type=Application
+          Categories=Utility;
+          EOL
       
-  #     - name: Copy icon for AppImage
-  #       run: cp assets/qt-webcam.png build/qt-webcam.png
+      - name: Copy icon for AppImage
+        run: cp assets/qt-webcam.png build/qt-webcam.png
 
-  #     - name: Download linuxdeployqt
-  #       run: |
-  #         wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
-  #         chmod +x linuxdeployqt-continuous-x86_64.AppImage
-  #         sudo apt-get update && sudo apt-get install -y libfuse2
+      - name: Download linuxdeployqt
+        run: |
+          wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
+          chmod +x linuxdeployqt-continuous-x86_64.AppImage
+          sudo apt-get update && sudo apt-get install -y libfuse2
 
-  #     - name: Bundle AppImage
-  #       run: ./linuxdeployqt-continuous-x86_64.AppImage build/qt-webcam -appimage
+      - name: Bundle AppImage
+        run: ./linuxdeployqt-continuous-x86_64.AppImage build/qt-webcam -appimage
 
-  #     - name: Package build
-  #       run: 7z a ${{ env.ARTIFACT_LIN }} build/* -r
+      - name: Package build
+        run: 7z a ${{ env.ARTIFACT_LIN }} build/* -r
 
-  #     - name: Upload zipped build artifact
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: qt-webcam-build-linux.zip
-  #         path: ${{ env.ARTIFACT_LIN }}
+      - name: Upload zipped build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: qt-webcam-build-linux.zip
+          path: ${{ env.ARTIFACT_LIN }}
 
-  #     - name: Upload AppImage artifact
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: qt-webcam-build-linux-appimage
-  #         path: build/qt-webcam-x86_64.AppImage
+      - name: Upload AppImage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: qt-webcam-build-linux-appimage
+          path: build/qt-webcam-x86_64.AppImage
 
   create-release:
     name: Create Release
     runs-on: ubuntu-22.04
-    needs: [build-windows, build-linux]
+    needs: [build-windows]
     steps:
       - name: Download Windows artifact
         uses: actions/download-artifact@v4
