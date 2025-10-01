@@ -83,28 +83,6 @@ Item {
             anchors.right: parent.right
             anchors.bottom: parent.bottom
         }
-
-        // Dragging area for rest of sheet
-        MouseArea {
-            anchors.top: header.bottom
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.bottom: parent.bottom
-            drag.target: sheet
-            drag.axis: Drag.YAxis
-            drag.minimumY: bottomSheet.height - openedHeight
-            drag.maximumY: bottomSheet.height - closedHeight
-            preventStealing: true  // blocks underlying map
-
-
-            onReleased: {
-                if (sheet.y < bottomSheet.height - (openedHeight + closedHeight)/2)
-                    bottomSheet.opened = true
-                else
-                    bottomSheet.opened = false
-            }
-            propagateComposedEvents: true
-        }
     }
 
     states: [
