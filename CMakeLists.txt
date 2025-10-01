@@ -39,6 +39,7 @@ qt_add_qml_module(appTesla_Infotainment
         Controllers/hvachandler.cpp
         Controllers/audiocontroller.h
         Controllers/audiocontroller.cpp
+        QML_FILES ui/RightScreen/MusicPlayer.qml
 )
 
 

@@ -156,7 +156,11 @@ Rectangle {
     }
 
     BottomSheet {
-        id: musicSheet
-        opened: false
+        id: musicSheet;
+        opened: false;
+
+        MusicPlayer{
+            id: musicPlayer;
+        }
     }
 }

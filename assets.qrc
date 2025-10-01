@@ -10,5 +10,12 @@
         <file>ui/assets/icons-mute.png</file>
         <file>ui/assets/icons-low-volume.png</file>
         <file>ui/assets/icons-audio-high.png</file>
+        <file>ui/assets/unstopable.jpg</file>
+        <file>ui/assets/icons-pause.png</file>
+        <file>ui/assets/icons-play.png</file>
+        <file>ui/assets/icons-backward.png</file>
+        <file>ui/assets/icons-forward.png</file>
+        <file>ui/assets/icons-shuffle.png</file>
+        <file>ui/assets/icons-repeat.png</file>
     </qresource>
 </RCC>
