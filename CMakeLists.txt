@@ -6,9 +6,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick Location)
-find_package(Qt6 REQUIRED COMPONENTS Core)
-find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Quick Location Core5Compat)
 find_package(Qt6 REQUIRED COMPONENTS Core)
 
 qt_standard_project_setup(REQUIRES 6.9)
@@ -29,6 +27,7 @@ qt_add_qml_module(appTesla_Infotainment
         ui/RightScreen/NavigationSearchBox.qml
         ui/BottomBar/HVACComponent.qml
         ui/BottomBar/VolumeComponent.qml
+        ui/RightScreen/BottomSheet.qml
 
     RESOURCES
         assets.qrc
@@ -57,10 +56,9 @@ set_target_properties(appTesla_Infotainment PROPERTIES
 target_link_libraries(appTesla_Infotainment
     PRIVATE Qt6::Quick
     Qt6::Location
+    Qt6::Core5Compat
 )
-target_link_libraries(appTesla_Infotainment PRIVATE Qt6::Core)
-target_link_libraries(appTesla_Infotainment PRIVATE Qt6::Core)
-target_link_libraries(appTesla_Infotainment PRIVATE Qt6::Core)
+target_link_libraries(appTesla_Infotainment PRIVATE Qt6::Core )
 
 include(GNUInstallDirs)
 install(TARGETS appTesla_Infotainment

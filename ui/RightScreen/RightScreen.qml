@@ -155,4 +155,8 @@ Rectangle {
         id: navigationSearchBox;
     }
 
+    BottomSheet {
+        id: musicSheet
+        opened: false
+    }
 }
